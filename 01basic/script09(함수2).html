@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+      //매개변수와 return
+      function func1(x){
+          var sum =0;
+          for(var i = 1; i<=x; i++){
+              sum += i;
+          }
+          
+      }
+      function func2(x,y){
+          return x+y
+      }
+      var computer = function(x,y,z){
+          return x+y+z;
+      }
+
+      console.log(func1(10));
+      console.log(func2(10, '개'));
+      console.log(func2('똥', '개'));
+    //console.log(func2(10)); 매개변수를 지키지 않아도 되지만, 개수에 맞춰 전달하는 편이 좋습니다.
+      console.log(computer(1,2,3))
+
+    </script>
+
+</body>
+</html>
