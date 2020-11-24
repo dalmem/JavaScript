@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.onload=function(){
+            var word = document.getElementById("word");
+            var title = document.getElementById("title");
+            word.onchange=function(){
+           
+            if(word.value == "안녕"){
+                title.innerHTML = "한국어 입니다"
+            }else if(word.value == "니하오"){                
+                title.innerHTML="중국어 입니다"
+                
+            }else if(word.value == "헬로우" ){
+                title.innerHTML="영어  입니다"
+                                
+            }else {
+                title.innerHTML="단어를 선택하세요"
+                
+                
+            }
+
+            }
+        }
+    </script>
+        <h1 id="title">단어를 선택하세요</h1>
+        <h4>(select에서 value속성은 선택된 값을 의미합니다)</h4>
+        <select name="" id="word" fixed>
+            <option>선택</option>
+            <option>안녕</option>
+            <option>니하오</option>
+            <option>헬로우</option>
+        </select>  
+</body>
+</html>

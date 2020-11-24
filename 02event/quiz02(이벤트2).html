@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        window.onload= function(){
+
+            var btn= document.getElementById("btn")
+            var btn1= document.getElementById("btn1")
+            btn1.addEventListener("click",naver)
+            btn.addEventListener("click",google)
+            function naver(){
+
+                    var YN = confirm("naver로 이동하시겠습니까")
+                    
+                    if(YN== true){
+                        location.href="https://www.naver.com/";
+                    }
+
+
+                
+            }
+            function google(){
+                var YN = confirm("google로 이동하시겠습니까")
+                    
+                    if(YN== true){
+                        location.href="https://www.google.com/";
+                    }
+            }
+        }
+    </script>
+        <button type="button" value="naver" id="btn1">네이버로 이동</button>
+        <button type="button" value="google" id="btn">구글로 이동</button>
+</body>
+</html>

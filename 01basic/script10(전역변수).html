@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //var변수의 유효범위는 function까지입니다.
+        //함수 안에 선언된 변수가 지역변수, 그 밖의 변수는 전역변수로 간주됩니다.
+
+        var num1 = 100;
+        if(true){
+            var num1 = 200;//전역변수
+        }
+        console.log(num1) //200 - 블록안에서는 전, 지역변수의 개념이 없어서 전역변수로 선언
+
+        var num2 = 50;
+        function add(){
+            var num2 = 500;
+        }
+        add();
+        console.log(num2);
+
+        let num3 = 100;
+        if(true){
+            let num3 = 200 // 지역변수로 판별
+        }
+        console.log(num3)
+
+
+        let num4 = 100;
+        function add2() {
+            let num4 = 200;
+        }
+        add2();
+        console.log(num4)
+
+    </script>
+</body>
+</html>
