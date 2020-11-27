@@ -14,17 +14,22 @@
     
     <script>
         
-        var a = document.getElementById("a");
-        console.log(a.value)
+        
 
         function cal(btn){
             
-                if(btn.value ==="+"){
-                    a.value= parseInt(a.value) +1;
+                var a = document.getElementById("a");
+                
+                if(btn.innerHTML ==="+"){
+                    a.value++;
 
 
                 }else{
-                    a.value-=1;
+                    if(a.value <=0){
+                        alert("0보다 작을 수 없습니다");
+                        return;
+                    }
+                    a.value--;
                 }
             
         }

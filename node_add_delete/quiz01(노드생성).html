@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        thead th{border: 1px solid black;}
+        table{border: 1px solid black; border-spacing: 0; border-collapse: collapse;}
+        
+    </style>
+</head>
+<body>
+    
+        <table>
+            <thead><!-- tr을 대신함 -->
+                <th>교시</th><!-- td를 대신함 -->
+                <th>훈련과목</th>
+                <th>담당자</th>
+                <th>훈련내용</th>
+            </thead>
+            
+        </table>
+        <button type="button" id="add5">5개추가하기</button>
+        <button type="button" id="add">1개추가하기</button>
+    <script>
+
+
+        var bt = document.getElementById("add")
+        var bt5 = document.getElementById("add5")
+        bt.onclick=function(){
+                var tbody = document.createElement("tbody")
+                var tr = document.createElement("tr")
+            for(var i = 0; i <4; i++){
+                var input = document.createElement("input");
+                var td = document.createElement("td")
+                td.appendChild(input);
+                tr.appendChild(td)
+              
+                tbody.appendChild(tr);
+                }
+            document.querySelector("table").appendChild(tbody);         
+
+        }
+        bt5.onclick=function(){
+                for(var j = 0 ; j<5; j++){
+                var tbody = document.createElement("tbody")
+                var tr = document.createElement("tr")
+            
+            
+            for(var i = 0; i <4; i++){
+                var input = document.createElement("input");
+                var td = document.createElement("td")
+                td.appendChild(input);
+                tr.appendChild(td)
+              
+                tbody.appendChild(tr);
+                
+                }
+                document.querySelector("table").appendChild(tbody);
+                }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>        
+        <form id="form" action="">
+            아이디<input type="text" name="id"> 
+            <span class="idMsg"></span><br/>
+            비밀번호<input type="password" name="pw"><br/>
+            <span class="pwMsg"></span><br/>
+        
+        </form>
+    </div>
+
+    <script>
+       var id = document.querySelector("input[name='id']")
+       var pw = document.querySelector("input[name='pw']")
+       var idMsg = document.querySelector(".idMsg")
+       var pwMsg = document.querySelector(".pwMsg")
+
+       id.addEventListener("keyup",function(){
+        if(id.value.length <4)
+        {
+            id.style.borderColor = "red";
+            idMsg.innerHTML ="아이디는 4글자 이상입니다."
+        }else{
+            id.style.borderColor = "green";
+
+            idMsg.innerHTML =""
+        }
+       
+       });
+
+       pw.addEventListener("keyup",function(){
+        if(pw.value.length < 8)
+        {
+            pw.style.borderColor = "red";
+            pwMsg.innerHTML ="비밀번호는 8글자 이상입니다."
+        }else{
+            pw.style.borderColor = "green";
+
+            pwMsg.innerHTML =""
+        }
+       });
+
+    </script>
+</body>
+</html>
