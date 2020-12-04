@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <h2 class="watch">0</h2>
+    <button type="button" class="aa bb stopInterval">중지</button>
+    <script>
+        //setInterval()은 일정시간마다 함수를 반복실행
+        //첫번째 매개변수는 (실행할 함수, 인터벌시간)이 들어갑니다
+        
+        var i =0;
+        var watch = document.querySelector(".watch")
+        var stop = setInterval(function(){
+            
+            
+            watch.innerHTML = i;
+
+            i++;
+        },1000)
+
+        //중지 버튼
+        var stopInterval = document.querySelector(".stopInterval");
+        stopInterval.onclick = function(){
+
+            clearInterval(stop);//매개변수로 중지시키려는 함수를 넣습니다.
+        }
+    </script>
+</body>
+</html>

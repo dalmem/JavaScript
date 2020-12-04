@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.dir(navigator)
+        console.log(navigator.appName)
+        console.log(navigator.userAgent)//사용자가 쓰는 브라우저 관련된 내용
+        //콜백함수? -> 위치정보에 관련된 내용을 실행시켰을 때, 성공에 대한 결과를 돌려주는 약속 된 함수
+        navigator.geolocation.getCurrentPosition(function(postion){
+            //CurrentPosition() - 콜백함수를 받을 때 첫번째 매개변수에 위치에대한 정보를 받도록 정의되어있습니다.
+            console.log(postion);
+            console.log("위도:" + postion.coords.latitude)
+            console.log("경도:" + postion.coords.longitude)
+        },function(){
+
+        });
+        function success(postion){
+            console.log(postion);
+            console.log("위도:" + postion.coords.latitude)
+            console.log("경도:" + postion.coords.longitude)
+        }
+        function fail(e){
+            alert("위치 정보를 얻는데 실패했습니다.")
+        }
+        (function(){
+            navigator.geolocation.getCurrentPosition(success, fail);
+        })
+    </script>
+</body>
+</html>

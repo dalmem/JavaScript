@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bgimg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
+        .clock h3{color: white;}
+    </style>
+</head>
+<body data-img='{"1":"img/1.jpg","2":"img/2.jpg","3":"img/3.jpg","4":"img/4.jpg"}'>
+    
+    <div class="clock">
+        <h3>00:00:00</h3>
+    </div>
+    <img class="bgimg" alt=""> 
+
+    <script>
+        function createTime(){
+            var date = new Date();
+            document.querySelector(".clock h3").innerHTML = date.toTimeString().substring(0,9)
+        }
+        var index = 0;
+        function changeBg(){
+            var data = document.body.dataset.img
+            var result = JSON.parse(data);
+
+            var bgimg = document.querySelector(".bgimg")
+            bgimg.src = result[++index];
+            if(Object.keys(result).length == index) index=0;
+
+        }
+
+        (function(){
+            createTime();
+            setInterval(createTime,1000)
+            changeBg();
+            setInterval(changeBg,3000)
+
+        })();
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        .center{text-align: center; margin: 100px 0;}
+        .movieList{width: 80%; margin: 0 auto; overflow: hidden;}
+        .movieList .movie{width: 33.3333%; height: 300px; float: left; position: relative;}
+        .movie img{position: absolute; top: 0; left: 0; width: 100px;}
+        .inner {padding-left: 100px;}
+        .inner .genres li{display: inline-block; padding: 5px;}
+        .inner .summary{overflow: scroll; height: 100px;}
+    </style>
+</head>
+<body>
+    
+    <div class="center">
+        <h3>영화 리스트 </h3>
+    </div>
+    <div class="movieList">
+        <!-- <div>
+            <img src="#" alt="">
+            <div class="inner">
+                <h3 class="title">title</h3>
+                <h3 class="year">year</h3>
+                <ul class="genres">
+                    <li>장르</li>
+                    <li>장르</li>
+                </ul>
+                <p class="summary">content...</p>
+            </div>
+        </div>  -->
+    </div>
+
+    <script>
+
+        //https://yts-proxy.now.sh/list_movies.json
+        //연습해볼 주소 - https://yts.mx/api
+
+        function ajax(){
+            fetch("https://yts-proxy.now.sh/list_movies.json?sort_by=year&limit=30").then(function(response){
+              if(response.status != 200){
+                  alert("서버 통신 실패")
+              }else{
+                return response.json();
+              }
+
+            }).then(function(jsondata){
+                //console.log(jsondata) 
+                var data = jsondata.data.movies
+                var movieList = document.querySelector(".movieList")//태그를 넣을 위치
+                var tag ="";//문자열의 형태로 누적할 변수
+
+                for(var i =0 ; i<data.length;i++){
+                    
+                    var title = data[i].title
+                    var year = data[i].year
+                    var summary = data[i].summary
+                    var genres = data[i].genres
+                    var img = data[i].medium_cover_image;
+
+                    // console.log(title,year,summary,genres,img)
+                    tag += '<div class="movie">';
+                        tag +='<img src="'+img+'">'
+                        tag +='<div class="inner">'
+                        tag +='<h3 class="title">'+title+'</h3>'
+                        tag +='<h3 class="year">'+year+'</h3>'
+                        tag +='<ul class="genres">';
+                            for(var k in genres){
+                                
+                                tag +='<li>-'+genres[k]+'</li>'
+                            }
+                        tag +='</ul>'
+                        tag +='<p class="summary">'+summary+'</p>'
+                        tag +='</div>'
+                        tag +='</div> '
+                    
+                }
+                movieList.innerHTML = tag;
+            })
+        }
+
+
+        (function(){
+            ajax();
+        })();
+    </script>
+</body>
+</html>

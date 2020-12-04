@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>날짜 객체 사용하기</h2>
+    <script>
+        var date = new Date(); //오늘 날짜 
+        console.log(date);  
+
+        console.log(date.getTime());//밀리초로 변경
+        console.log(date.getFullYear()); //년만 가져옴
+        console.log(date.getMonth()+1);//월
+        console.log(date.getDate());//일
+        console.log(date.getHours());//시
+        console.log(date.getMinutes());//분
+        console.log(date.getSeconds());//초
+        //시간차 구하기
+        //1일에 대한 밀리초 -> 1000* 60* 60* 24
+        //1시간에 대한 밀리초 -> 1000* 60 * 60
+        var gap = date.getTime() - 1606710281945 // 밀리초 - 밀리초
+        var str;
+        var millis = 1606710281945
+        if(gap < 1000 * 60 * 60 * 24){//1일 이하인 경우
+            if(gap < 1000 * 60 * 60 ){
+                //1시간 이하인 경우
+                 str = "방금 전"
+            }else{
+                str = parseInt(gap / (1000 * 60 * 60)) + "시간 전" //"xx시간 전"
+            }
+        }else{
+            var now = new Date(millis);
+            var year = now.getFullYear();
+            var month = now.getMonth();
+            var day = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            str = year +"년" +month + "월"
+        }   
+        console.log(str)
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 속성변경함수 : setAttribute(), getAttribute, removeAttribute() -->
+    <form method="post" name="forms">
+        <input type="hidden" name="num"><br>
+        <input type="text" name="title"><br>
+        
+        <input type="button" value="수정" onclick="change(this)">
+        <input type="button" value="추가" onclick="change(this)">
+    </form>
+
+    <script>
+
+        function change( a ){
+            //console.log(a.value); //일반적으로 많이 사용하는 방식
+            var handle = a.getAttribute("value");
+            if( handle === '수정'){
+                
+                //form은 document의 자식이라서 document.form이름으로 접근이 가능
+                document.forms.action="https://www.naver.com"
+                document.forms.setAttribute("action","https://www.naver.com")
+                document.forms.submit();
+            }else if (handle === '추가'){
+                document.forms.setAttribute("action", "https://www.google.com")
+            }
+        }
+
+        document.forms.action = "https://www.naver.com"
+
+    </script>
+
+</body>
+</html>

@@ -64,7 +64,7 @@
         <div class="content">
             <div class="left">
                 <div class="inner">
-                    <img src="" alt="test">
+                    <img src="1.jpg" alt="test">
                 </div>
             </div>
             <div class="right">
@@ -158,9 +158,16 @@
                 //박스안에 엘리먼트 추가
                 inner.appendChild(textarea)
                 inner.appendChild(button)
+                btn3.innerHTML="사진모드"
+                btn3.className = "picture"
 
             }else{
+                var img = document.createElement("img");
+                img.src = "1.jpg"
+                inner.appendChild(img);
 
+                btn3.innerHTML="메모장모드"
+                btn3.className = "write"
             }
         }
 

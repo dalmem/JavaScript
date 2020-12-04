@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tog li{display: inline-block; padding: 10px 50px; border: 1px solid black;} 
+        .tog-menu{display: none;}
+        .active{display: block;
+            animation: myfadein 1s ease-in;/* 호출할 애니메이션, 지속시간, 옵션 */
+        }
+        
+        /* 애니메이션 myfadein */
+        @keyframes myfadein {
+            from{
+                opacity: 0;
+                background-color: blue;
+
+            }to{
+                opacity: 1;
+                background-color: crimson;
+
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <section>
+        <ul class="tog"> 
+            <li data-id="#tog1" >메뉴1</li>
+            <li data-id="#tog2" >메뉴2</li>
+            <li data-id="#tog3" >메뉴3</li>
+        </ul>
+        <!-- 메뉴에 따라 보여줄 영역 -->
+        <div>
+            <div class="tog-menu" id="tog1">토글메뉴1</div>
+            <div class="tog-menu active" id="tog2">토글메뉴2</div>
+            <div class="tog-menu" id="tog3">토글메뉴3</div>
+        </div>
+    </section>
+
+    <script>
+        /*
+            이벤트 위임방식을 이용해서 이벤트를 처리
+            data-id값을 얻어서 각 아이디에 적합한 태그 클래스이름에 active를 추가해 줍니다.
+            나머지 tog-menu의 active는 지워줍니다.
+        */
+        var tog = document.querySelector(".tog");
+        var tog1 = document.getElementById("tog1")
+        var tog2 = document.getElementById("tog2")
+        var tog3 = document.getElementById("tog3")
+        var togList = document.querySelectorAll(".tog-menu")
+        
+        console.log(tog);
+        tog.onclick = function(){
+            if(event.target.tagName!=="LI")return;
+            // if(event.target.dataset.id ==="#tog1"){
+            //     tog1.classList.add("active")
+            //     tog2.classList.remove("active")
+            //     tog3.classList.remove("active")
+
+            // }else if(event.target.dataset.id ==="#tog2"){
+            //     tog2.classList.add("active")
+            //     tog1.classList.remove("active")
+            //     tog3.classList.remove("active")
+
+            // }else if(event.target.dataset.id ==="#tog3"){
+            //     tog3.classList.add("active")
+            //     tog2.classList.remove("active")
+            //     tog1.classList.remove("active")
+            // }
+            for(var i = 0; i<togList.length; i++){
+                if(togList[i].classList.contains("active")){
+                    togList[i].classList.remove("active")
+                }
+            }
+            var target = event.target.dataset.id;
+            document.querySelector(target).classList.add("active")
+
+            
+            
+        }
+
+    </script>
+</body>
+</html>
